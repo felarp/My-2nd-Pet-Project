@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.12.0'
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+ext {
+    junitJupiterVersion = '5.11.3'
+    allureJunitVersion = '2.21.0'
+    restAssuredVersion = '5.5.0'
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitJupiterVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
+    implementation "io.rest-assured:rest-assured:${restAssuredVersion}"
+    implementation "io.qameta.allure:allure-junit5:${allureJunitVersion}"
+    implementation 'org.aeonbits.owner:owner-java8:1.0.12'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.0'
+    runtimeOnly 'org.aspectj:aspectjweaver:1.9.22.1'
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    implementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
+
+}
+
+test {
+    useJUnitPlatform()
+}
