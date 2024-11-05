@@ -1,5 +1,4 @@
 import accertions.HttpAssertions;
-import accertions.PetSchemaValidator;
 import dto.PetRequest;
 import dto.PetResponse;
 import dto.Pets;
@@ -7,7 +6,6 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 public class PetDataApiTest extends BaseApiTest{
-private static final PetSchemaValidator validator = new PetSchemaValidator();
 
     @Test
     public void GetPetByStatusTest() {
@@ -28,7 +26,7 @@ private static final PetSchemaValidator validator = new PetSchemaValidator();
                 Pets.PET_STATUS);
 
 
-        Response response = apiProvider.post("/pet/", pet);
+        Response response = apiProvider.post("/pet", pet);
         validator.validateResponse(response);
     }
 }

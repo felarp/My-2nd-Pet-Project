@@ -1,13 +1,12 @@
 package dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
+
 @Getter
-
-@AllArgsConstructor
-
+@NoArgsConstructor
 public class PetRequest {
 
     private int id;
@@ -18,4 +17,12 @@ public class PetRequest {
     private String status;
 
 
+    public PetRequest(int id, PetCategory category, String name, List<String> photoUrls, List<PetTag> tags, String status) {
+        this.id = id;
+        this.category = category;
+        this.name = name;
+        this.photoUrls = photoUrls;
+        this.tags = tags;
+        this.status = status;
+    }
 }
