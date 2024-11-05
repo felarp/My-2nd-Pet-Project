@@ -24,4 +24,15 @@ public class ApiProvider {
                 .extract().response();
 
     }
+    public Response post (String endpoint, Object body) {
+        return given()
+                .accept(ContentType.JSON)
+                .contentType("application/json")
+                .body(body)
+                .when()
+                .post(endpoint)
+                .then()
+                .log().all()
+                .extract().response();
+    }
 }

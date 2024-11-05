@@ -1,24 +1,28 @@
 package dto;
 
-import jdk.jfr.Category;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.junit.jupiter.api.Tag;
 
+import java.util.Collections;
 import java.util.List;
+
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Pets {
 
-    private int id;
-    private Category category;
-    private String name;
-    private List<String> photoUrls;
-    private List<Tag> tags;
-    private String status;
-}
+
+        public static final int PET_ID = 0;
+        public static final String PET_NAME = "doggie";
+        public static final String PET_STATUS = "available";
+
+        public static final PetCategory PET_CATEGORY = new PetCategory(0, "string");
+        public static final List<String> PET_PHOTO_URLS = Collections.singletonList("string");
+        public static final List<PetTag> PET_TAGS = Collections.singletonList(new PetTag(0, "string"));
+    }
+

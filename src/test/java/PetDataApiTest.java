@@ -1,9 +1,13 @@
 import accertions.HttpAssertions;
+import accertions.PetSchemaValidator;
+import dto.PetRequest;
 import dto.PetResponse;
+import dto.Pets;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
 public class PetDataApiTest extends BaseApiTest{
+private static final PetSchemaValidator validator = new PetSchemaValidator();
 
     @Test
     public void GetPetByStatusTest() {
@@ -11,5 +15,20 @@ public class PetDataApiTest extends BaseApiTest{
         new HttpAssertions(response, PetResponse.class)
                 .statusCode(200);
 
+    }
+
+    @Test
+    public void addNewPet() {
+        PetRequest pet = new PetRequest(
+                Pets.PET_ID,
+                Pets.PET_CATEGORY,
+                Pets.PET_NAME,
+                Pets.PET_PHOTO_URLS,
+                Pets.PET_TAGS,
+                Pets.PET_STATUS);
+
+
+        Response response = apiProvider.post("/pet/", pet);
+        validator.validateResponse(response);
     }
 }
