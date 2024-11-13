@@ -10,12 +10,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class PetCategory extends ResponseType {
+public class PetClassification extends ResponseType {
 
     private int id;
     private String name;
 
-    public PetCategory(int id, String name) {
+    public PetClassification(int id, String name) {
         this.id = id;
         this.name = name;
     }

@@ -15,7 +15,7 @@ repositories {
 }
 ext {
     junitJupiterVersion = '5.11.3'
-    allureJunitVersion = '2.21.0'
+    allureJunitVersion = '2.29.0'
     restAssuredVersion = '5.5.0'
 }
 
@@ -24,6 +24,7 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
     implementation "io.rest-assured:rest-assured:${restAssuredVersion}"
     implementation "io.qameta.allure:allure-junit5:${allureJunitVersion}"
+    implementation 'io.qameta.allure:allure-rest-assured:2.29.0'
     implementation 'org.aeonbits.owner:owner-java8:1.0.12'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.0'
     runtimeOnly 'org.aspectj:aspectjweaver:1.9.22.1'
@@ -35,7 +36,12 @@ dependencies {
     implementation 'io.rest-assured:json-schema-validator:3.0.0'
 
 }
+allure {
+    version = '2.12.0'
 
+}
 test {
     useJUnitPlatform()
+    finalizedBy 'allureReport'
+    systemProperty 'allure.results.directory', file("build/allure-results")
 }

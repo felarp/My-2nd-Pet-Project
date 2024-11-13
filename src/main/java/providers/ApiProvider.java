@@ -1,6 +1,8 @@
 package providers;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
+import io.restassured.filter.Filter;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -17,10 +19,11 @@ public class ApiProvider {
         return given()
                 .accept(ContentType.JSON)
                 .queryParam("status", status)
+                .filter(new AllureRestAssured())
                 .when()
                 .get(endpoint)
                 .then()
-                .log().all()
+                //.log().all()
                 .extract().response();
 
     }
@@ -29,10 +32,11 @@ public class ApiProvider {
                 .accept(ContentType.JSON)
                 .contentType("application/json")
                 .body(body)
+                .filter(new AllureRestAssured())
                 .when()
                 .post(endpoint)
                 .then()
-                .log().all()
+                //.log().all()
                 .extract().response();
     }
 }

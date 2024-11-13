@@ -1,7 +1,7 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jdk.jfr.Category;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,10 +18,10 @@ import java.util.List;
 
 public class PetResponse extends ResponseType{
 
-    private int id;
-    private Category category;
+    private long id;
+    private PetClassification category;
     private String name;
     private List<String> photoUrls;
-    private List<Tag> tags;
+    private List <PetTag> tags;
     private String status;
 }
